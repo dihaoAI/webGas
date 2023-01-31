@@ -18,10 +18,10 @@ select_event = st.sidebar.selectbox('选择瓦斯预测模型',
 if select_event == '模型1':
 
     rootPath = './data/20201016'
-    filenames = os.listdir(rootPath)
+    filenames = sorted(os.listdir(rootPath), key=lambda x:int(x.split('.')[0][-2:]))
     df1 = pd.read_csv(os.path.join(rootPath, filenames[0]), encoding=u'gbk')
     for filename in filenames[1:]:
-        #print(filename)
+        print(filename)
         df = pd.read_csv(os.path.join(rootPath, filename), encoding=u'gbk')
         df1 = pd.concat([df1, df], ignore_index=True)
 
