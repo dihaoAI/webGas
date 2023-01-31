@@ -35,6 +35,7 @@ if select_event == '模型1':
 
     t4 = df1.loc[df1.地点=='8470运料巷配巷掘进面分风口甲烷T4', '检测值']
     t4 = pd.to_numeric(t4)
+    t4 = t4.values
 
     fig = px.line(t1)
     fig2 = px.line(t4)
@@ -42,15 +43,18 @@ if select_event == '模型1':
     f = plt.figure()
     plt.plot(t1)
 
+    f2 = plt.figure()
+    plt.plot(t4)
+
     # Plot!
     st.title('传感器T1')
     st.plotly_chart(f, use_container_width=True)
 
     st.title('传感器T4')
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(f2, use_container_width=True)
 
     st.title('T4预测结果')
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(f2, use_container_width=True)
 
 
 elif select_event == '模型2':
