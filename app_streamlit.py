@@ -21,7 +21,7 @@ if select_event == '模型1':
     filenames = sorted(os.listdir(rootPath), key=lambda x:int(x.split('.')[0][-2:]))
     df1 = pd.read_csv(os.path.join(rootPath, filenames[0]), encoding=u'gbk')
     for filename in filenames[1:]:
-        print(filename)
+        #print(filename)
         df = pd.read_csv(os.path.join(rootPath, filename), encoding=u'gbk')
         df1 = pd.concat([df1, df], ignore_index=True)
 
@@ -30,7 +30,7 @@ if select_event == '模型1':
 
     t1 = df1.loc[df1.地点=='8470运料巷配巷掘进面甲烷T1', '检测值']
     t1 = pd.to_numeric(t1)
-    t1 = t1.values[:15]
+    t1 = t1.values
     st.write(t1)
     print(t1)
 
