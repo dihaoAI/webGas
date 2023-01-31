@@ -64,7 +64,7 @@ elif select_event == '模型2':
     t4 = df1.loc[df1.地点=='8470运料巷配巷掘进面分风口甲烷T4', '检测值']
     t4 = pd.to_numeric(t4)
 
-    fig = px.line(t4)
+    fig = px.scatter(t4)
 
     # Plot!
     st.plotly_chart(fig, use_container_width=True)
