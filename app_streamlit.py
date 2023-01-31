@@ -27,7 +27,7 @@ if select_event == '模型1':
     df1['时间'] = pd.to_datetime(df1['时间'], format='%Y/%m/%d %H:%M')
     df1.set_index('时间', inplace=True)
 
-    t1 = df1.loc[df1.地点=='8470运料巷配巷掘进面甲烷T1', '检测值']
+    t1 = df1.loc[df1.地点=='8470运料巷配巷掘进面甲烷T1', '检测值'][:20]
     t1 = pd.to_numeric(t1)
 
     t4 = df1.loc[df1.地点=='8470运料巷配巷掘进面分风口甲烷T4', '检测值']
