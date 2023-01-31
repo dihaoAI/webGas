@@ -30,7 +30,7 @@ if select_event == '模型1':
 
     t1 = df1.loc[df1.地点=='8470运料巷配巷掘进面甲烷T1', '检测值']
     t1 = pd.to_numeric(t1)
-    t1 = t1.values
+    t1 = t1.values[:15]
     print(t1)
 
     t4 = df1.loc[df1.地点=='8470运料巷配巷掘进面分风口甲烷T4', '检测值']
