@@ -59,7 +59,7 @@ if select_event == '模型1':
 
 elif select_event == '模型2':
     rootPath = './data/20201016'
-    filenames = os.listdir(rootPath)
+    filenames = sorted(os.listdir(rootPath), key=lambda x:int(x.split('.')[0][-2:]))
     df1 = pd.read_csv(os.path.join(rootPath, filenames[0]), encoding=u'gbk')
     for filename in filenames[1:]:
         #print(filename)
