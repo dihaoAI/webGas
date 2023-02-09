@@ -4,16 +4,38 @@ import pandas as pd
 import numpy as np
 import os
 import plotly.express as px
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
 # -- Create sidebar for plot controls
-st.sidebar.markdown('## 控制台')
+st.sidebar.markdown('# 控制台')
 
 #-- Set time by GPS or event
 select_event = st.sidebar.selectbox('选择瓦斯预测模型',
                                     ['模型1', '模型2', '模型3'])
+
+#st.sidebar.empty()
+st.sidebar.markdown('### 模型参数调整')
+
+para_a = st.sidebar.slider('探头到掘进工作面的距离(m)', 0, 100, 30)
+para_b = st.sidebar.slider('巷道风速(m/s)', 0, 10, 3)
+
+para_a1 = st.sidebar.number_input('探头到掘进工作面的距离(m)')
+para_b1 = st.sidebar.number_input('巷道风速(m/s)')
+
+
+st.sidebar.markdown('### 文件上传')
+
+uploaded_file = st.sidebar.file_uploader("选择一个文件")
+if uploaded_file is not None:
+    # st.sidebar.write("filename:", uploaded_file.name)
+
+    # To read file as string:
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file, encoding=u'gbk')
+    st.write(dataframe)
+
 
 if select_event == '模型1':
     rootPath = './data/20201016'
