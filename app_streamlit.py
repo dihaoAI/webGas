@@ -20,12 +20,16 @@ st.sidebar.markdown('### 模型参数调整')
 
 para_a = st.sidebar.slider('探头到掘进工作面的距离(m)', 0, 100, 30)
 para_b = st.sidebar.slider('巷道风速(m/s)', 0, 10, 3)
+para_c = st.sidebar.slider('常量参数', 0, 10, 5)
 
 para_a1 = st.sidebar.number_input('探头到掘进工作面的距离(m)')
 para_b1 = st.sidebar.number_input('巷道风速(m/s)')
+para_c1 = st.sidebar.number_input('常量参数')
 
 
 st.sidebar.markdown('### 文件上传')
+
+
 
 uploaded_file = st.sidebar.file_uploader("选择一个文件")
 if uploaded_file is not None:
@@ -35,6 +39,14 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file, encoding=u'gbk')
     st.write(dataframe)
+
+
+st.sidebar.markdown('### 参考公式')
+# st.sidebar.markdown("$C(x, t)=\frac{M}{\sqrt{4 \pi D_t t}} \exp \left[-\frac{(x-u t)^2}{4 D_{\mathrm{t}} t}\right]+B x$")
+st.sidebar.markdown("$C(x, t)={{M}\over{\sqrt{4 \pi D_t t}}}\exp[{{(x-u t)^2}\over{4 D_{\mathrm{t}} t}}]+B x$")
+st.sidebar.write('其中，C(x，t) 为 x 位置处t时刻的瓦斯浓度; M为瓦斯气体生成量; Dt为紊流扩散系数，u表示巷道风速，B因单位长度煤壁暴露引起的测点瓦斯浓度增加。')
+
+
 
 
 if select_event == '模型1':
